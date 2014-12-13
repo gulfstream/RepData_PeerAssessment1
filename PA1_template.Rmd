@@ -101,12 +101,12 @@ hist(total2, main = "Number of Steps Per Day", xlab = "Total", bg = NA)
 
 *The mean.*
 ```{r}
-round(mean(total2, na.rm = TRUE))
+round(mean(total2))
 ```
 
 *The median.*
 ```{r}
-round(median(total2, na.rm = TRUE))
+round(median(total2))
 ```
 
 *Imputing the missing values does not significantly alter the results in this case. The distrbution is more or less unchanged, as are the mean and median.*  

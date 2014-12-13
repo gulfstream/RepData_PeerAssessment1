@@ -129,7 +129,7 @@ hist(total2, main = "Number of Steps Per Day", xlab = "Total", bg = NA)
 *The mean.*
 
 ```r
-round(mean(total2, na.rm = TRUE))
+round(mean(total2))
 ```
 
 ```
@@ -139,7 +139,7 @@ round(mean(total2, na.rm = TRUE))
 *The median.*
 
 ```r
-round(median(total2, na.rm = TRUE))
+round(median(total2))
 ```
 
 ```
