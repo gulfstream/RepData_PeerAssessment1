@@ -1,10 +1,8 @@
 # Reproducible Research: Peer Assessment 1
 <br>
 
-### Loading and preprocessing the data
-
-<br>
-
+### Loading and preprocessing the data  
+***
 Load the data.
 
 ```r
@@ -12,20 +10,15 @@ unzip(zipfile="activity.zip")
 x <- read.csv("activity.csv")
 ```
 
-<br>
-
 Process/transform the data (if necessary) into a format suitable for your analysis.
 
 ```r
 x$interval <- factor(x$interval)
 ```
-
 <br>
 
 ### What is the mean total number of steps taken per day?
-
-<br>
-
+***
 Make a histogram of the total number of steps taken each day.
 
 ```r
@@ -56,13 +49,10 @@ round(median(total, na.rm = TRUE))
 ```
 ## [1] 10765
 ```
-
 <br>
 
 ### What is the average daily activity pattern?
-
-<br>
-
+***
 Make a time series plot (i.e. `type = "l"`) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
 
 ```r
@@ -93,20 +83,15 @@ which(means == max(means))
 ## [1] 104
 ```
 
-*The 104th interval, which is the interval starting at 08:35.*
-
+*The 104th interval, which is the interval starting at 08:35.*  
 <br>
 
 ### Imputing missing values
-
-<br>
-
+***
 Note that there are a number of days/intervals where there are missing
 values (coded as `NA`). The presence of missing days may introduce
 bias into some calculations or summaries of the data.  
-
 <br>
-
 Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with `NA`s).
 
 ```r
@@ -117,16 +102,12 @@ sum(!complete.cases(x))
 ## [1] 2304
 ```
 
-*There are 2304 rows that contain at least one missing value.*
-
-<br>
-
+*There are 2304 rows that contain at least one missing value.*  
+<br>  
 Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-*For the sake of simplicity, I will just impute the mean number of steps of all intervals averaged across all days.*
-
-<br>
-
+*For the sake of simplicity, I will just impute the mean number of steps of all intervals averaged across all days.*  
+<br>  
 Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```r
@@ -135,9 +116,7 @@ x2$steps <- as.numeric(x2$steps)
 impute <- round(mean(means))
 x2$steps[is.na(x2$steps)] <- impute
 ```
-
-<br>
-
+<br>  
 Make a histogram of the total number of steps taken each day and Calculate and report the **mean** and **median** total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 ```r
@@ -147,6 +126,8 @@ hist(total2, main = "Number of Steps Per Day", xlab = "Total", bg = NA)
 
 ![](PA1_template_files/figure-html/10-1.png) 
 
+*The mean.*
+
 ```r
 round(mean(total2, na.rm = TRUE))
 ```
@@ -154,6 +135,8 @@ round(mean(total2, na.rm = TRUE))
 ```
 ## [1] 10752
 ```
+
+*The median.*
 
 ```r
 round(median(total2, na.rm = TRUE))
@@ -163,14 +146,11 @@ round(median(total2, na.rm = TRUE))
 ## [1] 10656
 ```
 
-*Imputing the missing values does not significantly alter the results in this case. The distrbution is more or less unchanged, as are the mean and median.*
-
+*Imputing the missing values does not significantly alter the results in this case. The distrbution is more or less unchanged, as are the mean and median.*  
 <br>
 
 ### Are there differences in activity patterns between weekdays and weekends?
-
-<br>
-
+***
 For this part the `weekdays()` function may be of some help here. Use
 the dataset with the filled-in missing values for this part.
 
@@ -183,9 +163,7 @@ x2$date <- factor(x2$date)
 levels(x2$date) <- c("weekday", "weekday", "weekday", "weekday", "weekday", 
                      "weekend", "weekend")
 ```
-
-<br>
-
+<br>  
 Make a panel plot containing a time series plot (i.e. `type = "l"`) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis).
 
 ```r
